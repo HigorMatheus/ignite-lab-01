@@ -1,21 +1,24 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { AuthorizationGuard } from 'src/http/auth/authorization.guard';
-import { ProductsService } from 'src/services/products.service';
+
+import { ProductsService } from '../../../services/products.service';
+import { AuthorizationGuard } from '../../auth/authorization.guard';
 import { CreateProductInput } from '../inputs/create-product-input';
+
 import { Product } from '../models/product';
 
 @Resolver(() => Product)
 export class ProductsResolver {
-  constructor(private productService: ProductsService) {}
+  constructor(private productsService: ProductsService) {}
+
   @Query(() => [Product])
   async products() {
-    return this.productService.listAllProducts();
+    return this.productsService.listAllProducts();
   }
 
   @UseGuards(AuthorizationGuard)
   @Mutation(() => Product)
   createProduct(@Args('data') data: CreateProductInput) {
-    return this.productService.createProduct(data);
+    return this.productsService.createProduct(data);
   }
 }

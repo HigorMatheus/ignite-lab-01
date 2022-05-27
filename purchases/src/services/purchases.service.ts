@@ -14,6 +14,16 @@ export class PurchasesService {
       },
     });
   }
+  async listAllFromCustomer(customerId: string) {
+    return await this.prisma.purchase.findMany({
+      where: {
+        customerId,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
   async createPurchase({ customerId, productId }: CreatePurchaseParams) {
     const product = await this.prisma.product.findUnique({
       where: {
