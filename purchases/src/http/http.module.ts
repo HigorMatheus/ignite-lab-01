@@ -5,9 +5,10 @@ import { DatabaseModule } from 'src/database/database.module';
 import path from 'node:path';
 import { ApolloDriver } from '@nestjs/apollo';
 import { ProductsResolver } from './graphql/resolvers/products.resolver';
-import { ProductService } from 'src/services/product.service';
+import { ProductsService } from 'src/services/products.service';
 import { PurchaseResolver } from './graphql/resolvers/purchases.resolver';
 import { PurchasesService } from 'src/services/purchases.service';
+import { CustomersService } from 'src/services/customers.service';
 
 @Module({
   imports: [
@@ -24,8 +25,9 @@ import { PurchasesService } from 'src/services/purchases.service';
     PurchaseResolver,
 
     // Services
-    ProductService,
+    ProductsService,
     PurchasesService,
+    CustomersService,
   ],
 })
 export class HttpModule {}

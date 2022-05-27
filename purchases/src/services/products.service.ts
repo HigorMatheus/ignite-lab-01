@@ -5,7 +5,7 @@ interface CreateProductParams {
   title: string;
 }
 @Injectable()
-export class ProductService {
+export class ProductsService {
   constructor(private prisma: PrismaService) {}
   async listAllProducts() {
     return await this.prisma.product.findMany();
