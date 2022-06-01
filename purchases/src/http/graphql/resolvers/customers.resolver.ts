@@ -8,10 +8,13 @@ import {
 } from '@nestjs/graphql';
 import { CustomersService } from '../../../services/customers.service';
 import { PurchasesService } from '../../../services/purchases.service';
-
 import { AuthorizationGuard } from '../../auth/authorization.guard';
 import { AuthUser, CurrentUser } from '../../auth/current-user';
 import { Customer } from '../models/customer';
+
+interface ResolveReferenceParams {
+  authUserId: string;
+}
 
 @Resolver(() => Customer)
 export class CustomersResolver {
@@ -32,7 +35,7 @@ export class CustomersResolver {
   }
 
   @ResolveReference()
-  resolveReference(reference: { authUserId: string }) {
+  resolveReference(reference: ResolveReferenceParams) {
     return this.customersService.getCustomerByAuthUserId(reference.authUserId);
   }
 }
