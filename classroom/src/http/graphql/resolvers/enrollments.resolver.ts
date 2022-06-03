@@ -7,16 +7,16 @@ import { AuthorizationGuard } from '../../auth/authorization.guard';
 import { Enrollment } from '../models/enrollment';
 
 @Resolver(() => Enrollment)
-export class EnrollmentResolver {
+export class EnrollmentsResolver {
   constructor(
     private enrollmentsService: EnrollmentsService,
     private studentsService: StudentsService,
-    private cursesService: CoursesService,
+    private coursesService: CoursesService,
   ) {}
 
   @Query(() => [Enrollment])
   @UseGuards(AuthorizationGuard)
-  students() {
+  enrollments() {
     return this.enrollmentsService.listAllEnrollments();
   }
 
@@ -26,7 +26,7 @@ export class EnrollmentResolver {
   }
 
   @ResolveField()
-  curse(@Parent() enrollment: Enrollment) {
-    return this.cursesService.getCourseById(enrollment.curseId);
+  course(@Parent() enrollment: Enrollment) {
+    return this.coursesService.getCourseById(enrollment.courseId);
   }
 }

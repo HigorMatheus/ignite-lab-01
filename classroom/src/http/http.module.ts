@@ -5,7 +5,7 @@ import path from 'node:path';
 import { DatabaseModule } from '../database/database.module';
 import { ApolloFederationDriver } from '@nestjs/apollo';
 import { CoursesResolver } from './graphql/resolvers/courses.resolver';
-import { EnrollmentResolver } from './graphql/resolvers/enrollments.resolver';
+import { EnrollmentsResolver } from './graphql/resolvers/enrollments.resolver';
 import { StudentsResolver } from './graphql/resolvers/students.resolver';
 import { CoursesService } from '../services/courses.service';
 import { EnrollmentsService } from '../services/enrollments.service';
@@ -22,7 +22,7 @@ import { StudentsService } from '../services/students.service';
   ],
   providers: [
     // Resolvers
-    EnrollmentResolver,
+    EnrollmentsResolver,
     CoursesResolver,
     StudentsResolver,
 

@@ -24,7 +24,7 @@ export class CoursesService {
   }
 
   getCourseBySlug(slug: string) {
-    return this.prisma.course.findUnique({
+    return this.prisma.course.findFirst({
       where: {
         slug,
       },

@@ -17,7 +17,7 @@ export class CoursesResolver {
   ) {}
   @Query(() => [Course])
   @UseGuards(AuthorizationGuard)
-  curses() {
+  courses() {
     return this.coursesService.listAllCourses();
   }
 
