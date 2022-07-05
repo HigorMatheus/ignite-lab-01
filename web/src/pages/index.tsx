@@ -97,11 +97,14 @@ const blogPosts = [
 ]
 
 
+
+
+
 function Home() {
   return (
     <>
       <Head>
-        <title>Cursos de programação</title>
+            <title>Cursos de programação</title>
         <link rel="shortcut icon" href="favicon.png" type="image/png" />
       </Head>
 
